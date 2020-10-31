@@ -56,9 +56,12 @@ a, a:hover{
 
 	background-color: #00d2ff;
 	border-radius: 50%;
+	opacity: 0;
 	position: fixed;
 	right: 3%;
 	bottom: 3%;
+	transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
+	transform:  translateX(100px);
 }
 
 .rowUp::before {
@@ -71,9 +74,10 @@ a, a:hover{
 	left: 19px;
 	top: 15px;
 	transform: rotate(45deg);
-	transition: background-color 0.3s ease-in-out;
- }
- .rowUp::after {
+	transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.rowUp::after {
 	content: "";
 	display: inline-block;
 	width: 3px;
@@ -83,9 +87,39 @@ a, a:hover{
 	right: 19px;
 	top: 15px;
 	transform: rotate(-45deg);
-	transition: background-color 0.3s ease-in-out;
- }
+	transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
 
+.rowUp:hover{
+	background-color: #f2d800;
+	transform: translateY(-15px);
+}
+
+.rowUp:active{
+	background-color: #f24d00;
+}
+
+
+.rotate{
+	opacity: 1;
+	transform: translateY(0px) rotate(0deg);
+}
+
+.show{
+	display: inline-block !important;
+}
+
+.overlay{
+	display: none;
+	width: 100%;
+	height: 100%;
+
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 50;
+}
 /* !Header */
 
 .header{
@@ -305,15 +339,31 @@ a, a:hover{
 	font-family: 'Playfair Display', serif;
 }
 
-.about__img{
+.about__video{
 	transform: translateY(60%);
 	position: relative;
 	box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.75);
 	cursor: pointer;
 }
 
-.about__img img{
+.about__video img{
 	max-width: 100%;
+	height: 100%;
+}
+
+.about__video__popUp{
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 60;
+}
+
+.about__video__popUp video{
+	width: 600px;
+	height: 400px;
+	outline: 0;
 }
 
 .about__circle{
@@ -546,6 +596,7 @@ a, a:hover{
 .updates .block{
 	min-height: 390px;
 	cursor: pointer;
+	/*background-color: #ccc;*/
 }
 
 
@@ -559,13 +610,18 @@ a, a:hover{
 }
 
 .updates .block:hover{
-	box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.75);
 	color: #0022ff;
+}
+
+.updates .block:hover .block__img,
+.updates .block:hover .block_text{
+	box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.75);
 }
 
 .updates .block_text{
 	width: 270px;
 	padding: 30px;
+	background-color: #fff;
 }
 
 .updates__blocks__link{
@@ -864,7 +920,7 @@ a, a:hover{
 		padding: 100px 100px 50px;
 	}
 
-	.about__img{
+	.about__video{
 		box-shadow: none;
 		transform: translateY(70%);
 	}
@@ -938,7 +994,7 @@ a, a:hover{
 		padding: 50px;
 		transform: translate(0);
 	}
-	.about__img{
+	.about__video{
 		transform: translate(0);
 	}
 

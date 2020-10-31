@@ -1,4 +1,5 @@
 $(function () {
+	// Адаптивные ссылки
 	$(".header__nav__link").on("click", function (e) {
 		e.preventDefault();
 
@@ -9,7 +10,38 @@ $(function () {
 		}, 800)
 	})
 
+	// Кнопка наверх
+	$(".rowUp").on("click", function (e) {
+		e.preventDefault();
 
+		$("html").animate({
+			scrollTop: 0,
+		}, 1000)
+	})
+
+	// Убираем кнопку наверх
+
+	function rowUpScroll() {
+		if ($(this).scrollTop() > 1000) {
+			$(".rowUp").addClass("rotate");
+		} else {
+			$(".rowUp").removeClass("rotate");
+		}
+	}
+	$(window).on("scroll", rowUpScroll);
+	rowUpScroll();
+
+	//Показ видео
+	$(".about__video").on("click", function () {
+		$(".about__video__popUp").addClass("show");
+		$(".overlay").addClass("show");
+	})
+
+	$(".overlay").on("click", function () {
+		$(this).removeClass("show");
+		$(".about__video__popUp").removeClass("show");
+		document.querySelector(".about__video__popUp video").pause();
+	})
 
 
 	/* slider */
