@@ -32,7 +32,7 @@
 						<a href="#" class="header__nav__link">Dealers</a>
 					</nav>
 
-					<div class="header__nav__btn">Меню</div>
+					<div class="header__nav__btn"></div>
 				</div>
 
 				<div class="col-lg-2 ml-auto">
@@ -92,15 +92,31 @@
 								<span class="product__content__stars__count">(52)</span>
 							</div>
 							<div class="product__content__buttons">
-								<a href="#" class="button activeBtn">Description</a>
-								<a href="#" class="button">Features</a>
-								<a href="#" class="button">Dimensions</a>
+								<a href="#" class="button activeBtn" data-text="text__description">Description</a>
+								<a href="#" class="button" data-text="text__features">Features</a>
+								<a href="#" class="button" data-text="text__dimensions">Dimensions</a>
 							</div>
-							<p class="product__content__text">Easy to ride, care free surfing craft that's fun for everyone,
-								paddles well, super fast down the line and great for any level of surfing depending on who rides
-								it. The Donny Stoker, a rework on design from stokesys first ever pro model. A super easy to
-								surf and fun board. The Donny Stoker is a board for total freesurfing expression.</p>
+							<div class="product__content__texts">
+								<p class="text text__description show">Easy to ride, care free surfing craft that's fun for
+									everyone,
+									paddles well, super fast down the line and great for any level of surfing depending on who
+									rides
+									it. The Donny Stoker, a rework on design from stokesys first ever pro model. A super easy to
+									surf and fun board. The Donny Stoker is a board for total freesurfing expression.</p>
 
+								<p class="text text__features">Hard to ride, care free surfing craft that's fun for everyone,
+									paddles well, super fast down the line and great for any level of surfing depending on who
+									rides
+									it. The Donny Stoker, a rework on design from stokesys first ever pro model. A super easy to
+									surf and fun board. The Donny Stoker is a board for total freesurfing expression.</p>
+
+								<p class="text text__dimensions">Very hard to ride, care free surfing craft that's fun for
+									everyone,
+									paddles well, super fast down the line and great for any level of surfing depending on who
+									rides
+									it. The Donny Stoker, a rework on design from stokesys first ever pro model. A super easy to
+									surf and fun board. The Donny Stoker is a board for total freesurfing expression.</p>
+							</div>
 							<div class="product__content__buy d-flex align-items-center">
 								<div class="price ">$499.99</div>
 								<a href="#" class="orderLink ">Buy now</a>
@@ -544,7 +560,7 @@
 						<form action="1.php">
 							<i class="fas fa-envelope footer__copyright__email"></i>
 							<input type="email" placeholder="Your email" class="footer__copyright__txt">
-							<input type="button" value="→" class="footer__copyright__btn">
+							<input type="submit" value="→" class="footer__copyright__btn">
 						</form>
 					</div>
 				</div>
@@ -553,6 +569,7 @@
 		</div>
 	</section>
 
+	<!-- !Заготовки -->
 	<a href="#" class="rowUp"></a>
 	<div class="about__video__popUp">
 		<video controls>
@@ -560,6 +577,9 @@
 		</video>
 	</div>
 	<div class="overlay"></div>
+	<div class="circleMenu"></div>
+
+	<!-- !Скрипты -->
 	<script src="script/jquery-3.5.1.js"></script>
 	<script src="script/slick.min.js"></script>
 	<script src="script/script.js"></script>

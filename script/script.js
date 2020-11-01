@@ -4,10 +4,67 @@ $(function () {
 		e.preventDefault();
 
 		let attr = $(this).attr("href");
-		console.log($(attr).offset().top);
-		$("html").animate({
-			scrollTop: $(attr).offset().top,
-		}, 800)
+
+		if ($(".circleMenu").hasClass("go")) {
+			$(".circleMenu").animate({
+				"width": "50px",
+				"height": "50px",
+				"border-radius": "50%",
+			}, 0, function () {
+				$(".header__nav").css("display", "none");
+				$(this).css("top", "auto");
+				$(".header__nav__btn").removeClass("exit");
+				$("html").animate({
+					scrollTop: $(attr).offset().top,
+				}, 800)
+			})
+		}
+	})
+
+	// Кнопка Меню
+	$(".header__nav__btn").on("click", function () {
+		let $circle = $(".circleMenu");
+		let $nav = $(".header__nav");
+
+		$($circle).toggleClass("go");
+
+		setTimeout(() => {
+			if ($($circle).hasClass("go")) {
+				$($circle).animate({
+					"width": "100%",
+					"height": "100%",
+					"left": "50%",
+					"top": "50%",
+					"border-radius": "0",
+				}, 0, function () {
+					$($nav).css("display", "flex");
+					$(".header__nav__btn").addClass("exit");
+				})
+			} else {
+				$($circle).animate({
+					"width": "50px",
+					"height": "50px",
+					"border-radius": "50%",
+				}, 0, function () {
+					$($nav).css("display", "none");
+					$(this).css("top", "auto");
+					$(".header__nav__btn").removeClass("exit");
+				})
+			}
+		}, 300)
+	})
+
+	// Изменение текста
+	let $buttons = $(".product__content__buttons .button");
+	$($buttons).on("click", function (e) {
+		e.preventDefault();
+		$($buttons).removeClass("activeBtn")
+		$(this).addClass("activeBtn")
+
+
+		let $txt = "." + $(this).data("text");
+		$(".product__content__texts .text").removeClass("show");
+		$($txt).addClass("show");
 	})
 
 	// Кнопка наверх
@@ -20,7 +77,6 @@ $(function () {
 	})
 
 	// Убираем кнопку наверх
-
 	function rowUpScroll() {
 		if ($(this).scrollTop() > 1000) {
 			$(".rowUp").addClass("rotate");
@@ -30,6 +86,15 @@ $(function () {
 	}
 	$(window).on("scroll", rowUpScroll);
 	rowUpScroll();
+
+	// Валидация формы
+	$(".footer__copyright form").on("submit", function (e) {
+		let $email = $(".footer__copyright__txt").val();
+		if ($($email).length < 1) {
+			$(".footer__copyright__txt").val("Enter correct email!")
+			e.preventDefault();
+		}
+	})
 
 	//Показ видео
 	$(".about__video").on("click", function () {
