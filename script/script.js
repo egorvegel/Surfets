@@ -1,58 +1,65 @@
 $(function () {
+	let $circle = $(".circleMenu");
+	let $nav = $(".header__nav");
+	let time = 300;
 	// Адаптивные ссылки
 	$(".header__nav__link").on("click", function (e) {
 		e.preventDefault();
+		$($circle).toggleClass("go");
 
 		let attr = $(this).attr("href");
+		if (attr.length > 1) {
+			animateMenu();
 
-		if ($(".circleMenu").hasClass("go")) {
-			$(".circleMenu").animate({
-				"width": "50px",
-				"height": "50px",
-				"border-radius": "50%",
-			}, 0, function () {
-				$(".header__nav").css("display", "none");
-				$(this).css("top", "auto");
-				$(".header__nav__btn").removeClass("exit");
+			setTimeout(function () {
 				$("html").animate({
 					scrollTop: $(attr).offset().top,
-				}, 800)
-			})
+				}, 800);
+			}, time + 200)
 		}
 	})
 
 	// Кнопка Меню
 	$(".header__nav__btn").on("click", function () {
-		let $circle = $(".circleMenu");
-		let $nav = $(".header__nav");
-
 		$($circle).toggleClass("go");
-
-		setTimeout(() => {
-			if ($($circle).hasClass("go")) {
-				$($circle).animate({
-					"width": "100%",
-					"height": "100%",
-					"left": "50%",
-					"top": "50%",
-					"border-radius": "0",
-				}, 0, function () {
-					$($nav).css("display", "flex");
-					$(".header__nav__btn").addClass("exit");
-				})
-			} else {
-				$($circle).animate({
-					"width": "50px",
-					"height": "50px",
-					"border-radius": "50%",
-				}, 0, function () {
-					$($nav).css("display", "none");
-					$(this).css("top", "auto");
-					$(".header__nav__btn").removeClass("exit");
-				})
-			}
-		}, 300)
+		animateMenu();
 	})
+
+	function animateMenu() {
+		$($circle).css("bottom", "50%")
+		if ($($circle).hasClass("go")) {
+			console.log(1);
+			$($circle).animate({
+
+				"width": "100%",
+				"height": "100%",
+
+				"border-radius": "0",
+			}, time, function () {
+				$($nav).css("display", "flex");
+				$(".header_social").css("display", "block");
+				document.body.style.overflow = "hidden";
+				$(".header__nav__btn").addClass("exit");
+			})
+		} else {
+
+			$($circle).animate({
+				"width": "50px",
+				"height": "50px",
+				"border-radius": "50%",
+			}, time, function () {
+				$($nav).css("display", "none");
+				$(".header_social").css("display", "none");
+				document.body.style.overflow = "visible";
+				$(".header__nav__btn").removeClass("exit");
+				setTimeout(function () {
+					$($circle).css("bottom", "-5%")
+				}, time)
+
+			})
+
+		}
+	}
 
 	// Изменение текста
 	let $buttons = $(".product__content__buttons .button");
@@ -110,7 +117,8 @@ $(function () {
 
 
 	/* slider */
-	$(".slider").slick({
+	let $slider = $(".slider");
+	$($slider).slick({
 		arrows: false,
 		dots: false,
 		slidesToShow: 4,
@@ -123,7 +131,7 @@ $(function () {
 				breakpoint: 992,
 				settings: {
 					slidesToShow: 2,
-					slidesToScroll: 1,
+					slidesToScroll: 2,
 					arrows: false,
 					dots: true,
 				}
@@ -131,9 +139,6 @@ $(function () {
 			{
 				breakpoint: 756,
 				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-					arrows: false,
 					dots: true,
 				}
 			},
@@ -142,7 +147,6 @@ $(function () {
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1,
-					arrows: false,
 					dots: true,
 				}
 			},

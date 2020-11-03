@@ -120,6 +120,10 @@ a, a:hover{
 	display: inline-block !important;
 }
 
+.hide{
+	display: none;
+}
+
 .overlay{
 	display: none;
 	width: 100%;
@@ -138,18 +142,15 @@ a, a:hover{
 	background-color: #f2d800;
 	border-radius: 50%;
 	
-	position: absolute;
+	position: fixed;
 	left: 50%;
-	bottom: 0;
-	top: auto;
-	transform: translate(-50%, 0);
+	bottom: -5%;
+	transform: translate(-50%, 50%);
 	transition: all ease-out 0.3s;
-	opacity: 0;
 }
 
 .circleMenu.go{
 	bottom: 50%;
-	transform: translate(-50%,-50%);
 	z-index: 10;
 	position: fixed;
 	opacity: 1;
@@ -165,6 +166,18 @@ a, a:hover{
 .header__logo{
 	font-size: 34px;
 	font-weight: bold;
+}
+
+.header__nav{
+	display: none;
+
+	flex-direction: column;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 20;	
+	font-size: 18px;
 }
 
 .header__nav__link{
@@ -189,8 +202,8 @@ a, a:hover{
 	background-color: rgb(255, 238, 0);
 }
 
-.header__nav__btn{
-	display: none;
+.header__nav__btn {
+	display: inline-block;
 	position: relative;
 
 	width: 40px;
@@ -199,6 +212,7 @@ a, a:hover{
 	border-radius: 2px;
 	z-index: 20;
 	transition: all 0.3s  linear;
+	cursor: pointer;
 }
 
 .header__nav__btn::before, .header__nav__btn::after{
@@ -236,6 +250,20 @@ a, a:hover{
 
 .header__nav__btn.exit::after{
 	display: none;
+}
+
+.header .col{
+	position: static;
+}
+
+.header_social{
+	display: none;
+	position: fixed;
+	left: 50%;
+	bottom: 10px;
+	
+	transform: translate(-50%, 0%);
+	z-index: 100;
 }
 
 .header_social_link{
@@ -279,6 +307,7 @@ a, a:hover{
 	color: #ffffff;
 }
 
+
 .product{
 	margin-top: 150px;
 	margin-bottom: 50px;
@@ -290,6 +319,9 @@ a, a:hover{
 	position: relative;
 }
 
+.header .product__img, .header .product__choose{
+	z-index: 10;
+}
 .product::before{
 	content: "";
 	position: absolute;
@@ -558,6 +590,7 @@ a, a:hover{
 /* Точки (булиты) */
 .slick-dots{
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 
@@ -777,7 +810,7 @@ a, a:hover{
 
 
 .socials__facebook{
-	min-height: 350px;
+	min-height: 270px;
 	padding-top: 30px;
 	font-size: 20px;
 	font-weight: bold;
@@ -793,7 +826,7 @@ a, a:hover{
 	min-height: 170px;
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top: 60%;
 	transform: translate(-50%, -50%);
 	background: url("../img/socials/facebookbg.jpg") 50%  50% / cover no-repeat;
 
@@ -905,6 +938,10 @@ a, a:hover{
 	color: #f2d800;
 }
 
+.footer__copyright{
+	padding-top: 30px;
+}
+
 .footer__copyright__text{
 	font-size: 12px;
 	color: #4d4d4d;
@@ -978,22 +1015,7 @@ a, a:hover{
 		position: static;
 	}
 
-	.header__nav{
-		display: none;
-
-		flex-direction: column;
-		position: fixed;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 20;	
-		font-size: 18px;
-	}
-
-	.header__nav__btn{
-		display: inline-block;
-
-	}
+	
 
 	.header_social{
 		display: none;
@@ -1072,7 +1094,7 @@ a, a:hover{
 		color: #ffffff;
 	}
 
-	/* !footer */
+	/* !socials */
 	.footer__copyright{
 		margin-top: 30px;
 	}
@@ -1083,13 +1105,23 @@ a, a:hover{
 
 @media screen and (max-width: 756px){
 	.tip {
-		font-size: 60px !important;
+		font-size: 60px;
 		top: -60px;
   	}
 
   /* !about */
 	.about{
+		margin-top: 50px;
 		padding: 50px 0;
+		background: url("../img/about/bg.png") 50% 50% / cover no-repeat;
+	}
+
+	.about .tip{
+		top: -110px;
+	}
+
+	.about .title{
+		text-shadow: 1px 2px 5px #000;
 	}
 	.about__content{
 		padding: 50px;
@@ -1099,7 +1131,35 @@ a, a:hover{
 		transform: translate(0);
 	}
 
+	.about__wrapper{
+		position: relative;
+		background: inherit;
+	}
+	
+	.about__content{
+
+		padding: 50px;
+		background-color: inherit;
+		color: #ffffff;
+	
+		text-shadow: 1px 2px 5px #000;
+		transform: translateY(0%); 
+	}
+
+	.about__video__popUp{
+		width: 100%;
+	}
+
+	.about__video__popUp video{
+		width: 100%;
+		height: auto;
+	}
+	
+
 	/* !Team */
+	.team{
+		padding: 100px 0 50px;
+	}
 	.team .item{
 		width: 50%;
 		margin: 0 20px;
@@ -1126,10 +1186,27 @@ a, a:hover{
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-  	}
+	}
+
+	/* !socials*/
+	.socials .tip{
+		font-size: 60px;
+		top: -60px;
+	}
 }
 
 @media screen and (max-width: 500px){
+	.tip{
+		width: 100%;
+		color: #8b8b8b;
+		font-size: 40px;
+		text-align: center;
+	}
+
+	.hide__mobile{
+		display: none;
+	}
+	
 	/* !header */
 	.header__logo{
 		font-size: 24px;
@@ -1156,5 +1233,49 @@ a, a:hover{
 
 	.header .product::before{
 		border-width: 516px 289px 0 0;
+	}
+
+	.header .product__content__buy{
+		margin-bottom: 25px;
+	}
+
+	.header .product__content__buttons a{
+		margin-right: 0;
+	}
+	.header .product__content__buy .orderLink{
+		padding: 10px 20px;
+	}
+	.header .product__content__buttons {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 0;
+	}
+
+	/* !About */
+	.about .tip{
+		top: -90px;
+		color: #646464;
+	}
+
+	.about__content{
+		padding: 10px;
+	}
+
+	.about .link{
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+
+	/* !Team */
+	.team .tip{
+		top: -40px;
+	}
+
+	/* !socials */
+	.socials .tip{
+		font-size: 40px;
+		top: -40px;
+		text-align: center;
 	}
 }
