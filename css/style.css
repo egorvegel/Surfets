@@ -147,6 +147,7 @@ a, a:hover{
 	bottom: -5%;
 	transform: translate(-50%, 50%);
 	transition: all ease-out 0.3s;
+	z-index: 100;
 }
 
 .circleMenu.go{
@@ -178,6 +179,7 @@ a, a:hover{
 	transform: translate(-50%, -50%);
 	z-index: 20;	
 	font-size: 18px;
+	z-index: 110;
 }
 
 .header__nav__link{
@@ -263,7 +265,7 @@ a, a:hover{
 	bottom: 10px;
 	
 	transform: translate(-50%, 0%);
-	z-index: 100;
+	z-index: 110;
 }
 
 .header_social_link{
@@ -1193,6 +1195,10 @@ a, a:hover{
 		font-size: 60px;
 		top: -60px;
 	}
+
+	.footer__copyright {
+		margin-top: 0px; 
+  	}
 }
 
 @media screen and (max-width: 500px){
@@ -1277,5 +1283,13 @@ a, a:hover{
 		font-size: 40px;
 		top: -40px;
 		text-align: center;
+	}
+
+	.footer__copyright {
+		margin-top: 0px; 
+	}
+	  
+	.footer__copyright {
+		padding-top: 0px; 
 	}
 }
