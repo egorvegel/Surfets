@@ -2,7 +2,7 @@ $(function () {
 	let $circle = $(".circleMenu");
 	let $nav = $(".header__nav");
 	let time = 300;
-	// Адаптивные ссылки
+	// Links
 	$(".header__nav__link").on("click", function (e) {
 		e.preventDefault();
 		$($circle).toggleClass("go");
@@ -19,7 +19,7 @@ $(function () {
 		}
 	})
 
-	// Кнопка Меню
+	// Btn Menu
 	$(".header__nav__btn").on("click", function () {
 		$($circle).toggleClass("go");
 		animateMenu();
@@ -61,7 +61,7 @@ $(function () {
 		}
 	}
 
-	// Изменение текста
+	// Change text
 	let $buttons = $(".product__content__buttons .button");
 	$($buttons).on("click", function (e) {
 		e.preventDefault();
@@ -74,7 +74,7 @@ $(function () {
 		$($txt).addClass("show");
 	})
 
-	// Кнопка наверх
+	// rowUp
 	$(".rowUp").on("click", function (e) {
 		e.preventDefault();
 
@@ -83,7 +83,7 @@ $(function () {
 		}, 1000)
 	})
 
-	// Убираем кнопку наверх
+	// hide rowUp
 	function rowUpScroll() {
 		if ($(this).scrollTop() > 1000) {
 			$(".rowUp").addClass("rotate");
@@ -94,7 +94,7 @@ $(function () {
 	$(window).on("scroll", rowUpScroll);
 	rowUpScroll();
 
-	// Валидация формы
+	// Validation form
 	$(".footer__copyright form").on("submit", function (e) {
 		let $email = $(".footer__copyright__txt").val();
 		if ($($email).length < 1) {
@@ -103,7 +103,7 @@ $(function () {
 		}
 	})
 
-	//Показ видео
+	// watch video
 	$(".about__video").on("click", function () {
 		$(".about__video__popUp").addClass("show");
 		$(".overlay").addClass("show");
